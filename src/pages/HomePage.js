@@ -12,8 +12,25 @@ import {
   } from "@chakra-ui/react";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import { useNavigate } from 'react-router-dom';
+import {useEffect} from 'react';
+
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+   
+    console.log(user)
+    if (user) navigate("/chats");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
+
+
   return (
+
+    
+
     <Container  maxW="xl" centerContent>
        <Box
         d="flex"

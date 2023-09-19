@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import  {useNavigate} from "react-router-dom";
-// import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
 
-  // const { setUser } = ChatState();
+  const { user , setUser } = ChatState();
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
@@ -53,9 +53,10 @@ function Login() {
         isClosable: true,
         position: "bottom",
       });
-      // setUser(data);
+      setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
-      console.log("ho gaya bhai");
+      console.log("Hello" + user);
+      console.log(data);
       setLoading(false);
       navigate("/chats");
       console.log("chal jaa bhai")

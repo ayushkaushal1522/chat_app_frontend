@@ -101,7 +101,7 @@ const submithandler = async() => {
         },
       };
       const { data } = await axios.post(
-        "https://blue-dentist-kibod.pwskills.app:8080/api/user/",
+        "https://blue-dentist-kibod.pwskills.app:8080/api/user",
         {
           name,
           email,
