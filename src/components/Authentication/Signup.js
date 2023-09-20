@@ -112,7 +112,7 @@ const submithandler = async() => {
       );
       console.log(data);
       toast({
-        title: "Registration Successful",
+        title: "Registration Successful !! PLease Login",
         status: "success",
         duration: 5000,
         isClosable: true,
@@ -120,7 +120,6 @@ const submithandler = async() => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      navigate("/chats");
     } catch (error) { 
       toast({
         title: "Error Occured!",

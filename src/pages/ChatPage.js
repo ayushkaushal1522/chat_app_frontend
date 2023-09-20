@@ -7,11 +7,13 @@ import { ChatState } from "../Context/ChatProvider";
 import SideDrawer from "../components/miscellaneous/SideDrawer";
 import MyChats from "../components/MyChats"
 import ChatBox from "../components/ChatBox"
+import { Flex } from "@chakra-ui/react" 
 const ChatPage = () => {
 
 
   const { user } = ChatState();
   const navigate = useNavigate();
+  const [fetchAgain, setFetchAgain] = useState(false);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -28,9 +30,9 @@ const ChatPage = () => {
     <div style={{width:"100%"}}>
 
         {user && <SideDrawer />}
-        <Box d="flex" justifyContent="space-between" w="100%" h="91.5vh" p="10px">
-          {user && <MyChats  />}
-          {user && <ChatBox  />}
+        <Box display="flex" justifyContent="space-between" w="100%" h="91.5vh" p="10px">
+          {user && <MyChats fetchAgain={fetchAgain}  />}
+          {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
         </Box>
     </div>
   );
