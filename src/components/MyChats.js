@@ -8,12 +8,14 @@ import ChatLoading from "./ChatLoading";
 import { Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
+import { useNavigate } from "react-router-dom";
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
 
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const toast = useToast();
+  const navigate = useNavigate();
 
   const fetchChats = async () => {
     // console.log(user._id);
@@ -29,14 +31,8 @@ const MyChats = ({ fetchAgain }) => {
       console.log(data)
       setChats(data);
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: "Failed to Load the chats",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom-left",
-      });
+      navigate("/")
+      console.log(error);
     }
   };
 

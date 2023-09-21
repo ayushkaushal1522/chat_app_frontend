@@ -59,7 +59,7 @@ import {
           },
         };
         const { data } = await axios.get(`https://blue-dentist-kibod.pwskills.app:8080/api/user?search=${search}`, config);
-        console.log(data);
+        // console.log(data);
         setLoading(false);
         setSearchResult(data);
       } catch (error) {
